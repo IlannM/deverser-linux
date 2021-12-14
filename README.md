@@ -1,32 +1,41 @@
 # Déverser-linux
-Original script by @moski_dev. If you are using Mac this script with the folling procedure should also, but this is targeted to linux machines.\
-[Here's the original repo](https://github.com/MatthewPierson/deverser), go there to know what the hell this is about.
-## Requirements
-On your PC/Mac:
+[Original (macOS) script](https://github.com/MatthewPierson/deverser) by [@moski_dev](https://twitter.com/moski_dev)
 
-- `iproxy`\
-install it if you haven't already.\
-Debian/Ubuntu:\
-`sudo apt install libusbmuxd-tools`\
-MacOS: ([brew](brew.sh) required)\
-`brew install libimobiledevice`
+## Dependencies
+### General
+    sudo apt-get install curl openssh-client unzip
 
-- `img4tool`\
-download it [here](https://github.com/tihmstar/img4tool/releases/tag/197)\
-extract it.\
-"install" the binary\
-`sudo cp buildroot_ubuntu-latest/usr/local/bin/img4tool /usr/local/bin/img4tool`\
-On your idevice:
-- `OpenSSH`\
-Install it with your package manager.
+### img4tool
+    mkdir img4tool && cd img4tool
+
+    curl -L https://github.com/tihmstar/img4tool/releases/latest/download/buildroot_ubuntu-latest.zip --output img4tool-latest.zip
+
+    unzip img4tool-latest.zip
+
+    sudo cp buildroot_ubuntu-latest/usr/local/bin/img4tool /usr/local/bin/img4tool && sudo cp -R buildroot_ubuntu-latest/usr/local/include/img4tool /usr/local/include
+
+    cd .. && rm -r img4tool
+
+    sudo chmod +x /usr/local/bin/img4tool
+
+### On your idevice:
+Install `openssh` from your package manager or via cli with
+
+    sudo apt-get install openssh
+
 ## Before running the script
-Start `iproxy` in the background:\
-`iproxy 2222 22 > /dev/null &`\
-Change the script permisions to run it:\
-`chmod +x ./deverser-linux.sh`
-## Now we are good to run the script
-`./deverser-linux.sh`
-if you did everything correctly, you should have a .shsh2 file in your folder.
-# Credits
-- @moski_dev for the original script
-- me, @ilanmittelman for adding linux support
+    chmod +x ./deverser-linux.sh
+
+Ensure that your idevice is connected to the same WiFi network as your pc and test the ssh connection by running `ssh root@your_device_ip_address` and entering your root password when prompted. Once you've confirmed that you can access your device, type `exit`.
+
+**Note**: the default root password is "alpine" and should be changed if you haven't changed it already by typing `su`, logging in with "alpine," typing `passwd`, and following the prompts.
+
+## Running the script
+    sudo ./deverser-linux.sh
+
+If you've done everything correctly, you should see a .shsh2 file in your current working directory!
+
+## Credits
+- Matty (@moski_dev) for the original script
+- IlanM for adding linux support
+- Lightmann for various refinements
