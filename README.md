@@ -3,7 +3,7 @@
 
 ## Dependencies
 ### General
-    sudo apt-get install curl openssh-client unzip
+    sudo apt-get install curl openssh-client rsync unzip
 
 ### img4tool
     mkdir img4tool && cd img4tool
@@ -12,11 +12,9 @@
 
     unzip img4tool-latest.zip
 
-    sudo cp buildroot_ubuntu-latest/usr/local/bin/img4tool /usr/local/bin/img4tool && sudo cp -R buildroot_ubuntu-latest/usr/local/include/img4tool /usr/local/include
+    sudo cp buildroot_ubuntu-latest/usr/local/bin/img4tool /usr/local/bin/img4tool && sudo chmod +x /usr/local/bin/img4tool && sudo cp -R buildroot_ubuntu-latest/usr/local/include/img4tool /usr/local/include
 
     cd .. && rm -r img4tool
-
-    sudo chmod +x /usr/local/bin/img4tool
 
 ### On your idevice:
 Install `openssh` from your package manager or via cli with
@@ -24,7 +22,7 @@ Install `openssh` from your package manager or via cli with
     sudo apt-get install openssh
 
 ## Before running the script
-    chmod +x ./deverser-linux.sh
+    chmod +x deverser-linux.sh
 
 Ensure that your idevice is connected to the same WiFi network as your pc and test the ssh connection by running `ssh root@your_device_ip_address` and entering your root password when prompted. Once you've confirmed that you can access your device, type `exit`.
 
@@ -37,5 +35,6 @@ If you've done everything correctly, you should see a .shsh2 file in your curren
 
 ## Credits
 - Matty (@moski_dev) for the original script
+- Tihmstar (@tihmstar) for creating img4tool
 - IlanM for adding linux support
 - Lightmann for various refinements
