@@ -1,9 +1,9 @@
 # Déverser-linux
-[Original (macOS) script](https://github.com/MatthewPierson/deverser) by [@moski_dev](https://twitter.com/moski_dev)
+**[Original (macOS) script](https://github.com/MatthewPierson/deverser) by [@moski_dev](https://twitter.com/moski_dev)**
 
 ## Dependencies
 ### General
-    sudo apt-get install curl openssh-client rsync unzip
+    sudo apt install curl libssl1.1 openssh-client rsync sudo unzip
 
 ### img4tool
     mkdir img4tool && cd img4tool
@@ -12,14 +12,18 @@
 
     unzip img4tool-latest.zip
 
-    sudo cp buildroot_ubuntu-latest/usr/local/bin/img4tool /usr/local/bin/img4tool && sudo chmod +x /usr/local/bin/img4tool && sudo cp -R buildroot_ubuntu-latest/usr/local/include/img4tool /usr/local/include
+    sudo cp buildroot_ubuntu-latest/usr/local/bin/img4tool /usr/local/bin/img4tool
+
+    sudo chmod +x /usr/local/bin/img4tool
+
+    sudo cp -R buildroot_ubuntu-latest/usr/local/include/img4tool /usr/local/include
 
     cd .. && rm -r img4tool
 
 ### On your idevice:
 Install `openssh` from your package manager or via cli with
 
-    sudo apt-get install openssh
+    sudo apt install openssh
 
 ## Before running the script
     chmod +x deverser-linux.sh
